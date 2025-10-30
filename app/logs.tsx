@@ -1,15 +1,15 @@
 import { Link } from 'expo-router'
 import { Pressable, Text, View } from 'react-native'
 
-export default function HomeScreen() {
+export default function LogsScreen() {
   return (
     <View>
-      <Text>Home Screen (Toggle goes here)</Text>
+      <Text>Logs Screen</Text>
       
       {/* Link to Logs page */}
-      <Link href="/logs" asChild>
+      <Link href="/(tabs)" asChild>
         <Pressable>
-          <Text>View Logs</Text>
+          <Text>Back to homerist</Text>
         </Pressable>
       </Link>
     </View>
