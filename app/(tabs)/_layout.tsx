@@ -1,6 +1,6 @@
-import { IconSymbol } from '@/components/ui/icon-symbol'
-import { Link, Tabs, usePathname } from 'expo-router'
-import { Pressable, View } from 'react-native'
+import { OcticonsIcon } from '@/components/ui/octoicons';
+import { Link, Tabs, usePathname } from 'expo-router';
+import { Pressable, View } from 'react-native';
 
 export default function TabLayout() {
   const pathname = usePathname() 
@@ -22,12 +22,12 @@ export default function TabLayout() {
           <View className='flex flex-row gap-3 mr-4'>
             <Link href="/notifications" asChild>
               <Pressable className={`size-11 flex items-center justify-center rounded-[10px]  ${pathname === '/notifications' ? 'bg-neutral-100' : 'bg-neutral-800'}`}>
-                <IconSymbol name="bell.fill" size={18} color={pathname === '/notifications' ? '#171717' : 'white'} />
+                <OcticonsIcon name="bell" size={18} color={pathname === '/notifications' ? '#171717' : 'white'} />
               </Pressable>
             </Link>
             <Link href="/settings" asChild>
               <Pressable className={`size-11 flex items-center justify-center rounded-[10px] ${pathname === '/settings' ? 'bg-neutral-100' : 'bg-neutral-800'}`}>
-                <IconSymbol name="gearshape.fill" size={18} color={pathname === '/settings' ? '#171717' : 'white'} />
+                <OcticonsIcon name="gear" size={18} color={pathname === '/settings' ? '#171717' : 'white'} />
               </Pressable>
             </Link>
           </View>
@@ -35,8 +35,8 @@ export default function TabLayout() {
         tabBarStyle: {
           position: 'absolute',
           bottom: 20,
-          // idk why this works but temporary only huhu
-          transform: [{ translateX: '43%' }], 
+          left: '50%',
+          transform: [{ translateX: '-50%' }], 
           width: 195,                    
           paddingHorizontal: 13,        
           elevation: 8,
@@ -61,14 +61,14 @@ export default function TabLayout() {
         tabBarActiveTintColor: '#ffffff',
         tabBarInactiveTintColor: '#737373',
         tabBarShowLabel: false,
-      }}>
+    }}>
       {/* BOTTOM NAV: Community, Home, and Profile */}
       <Tabs.Screen
         name="community"
         options={{
           title: 'Community',
           tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="person.3.fill" color={color} />
+            <OcticonsIcon name="comment-discussion" size={28} color={color} />
           ),
         }}
       />
@@ -77,7 +77,7 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="house.fill" color={color} />
+            <OcticonsIcon name="home" size={28} color={color} />
           ),
         }}
       />
@@ -86,7 +86,7 @@ export default function TabLayout() {
         options={{
           title: 'Profile',
           tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="person.circle.fill" color={color} />
+            <OcticonsIcon name="person" size={28} color={color} /> 
           ),
         }}
       />
