@@ -22,29 +22,25 @@ export default function TabLayout() {
           <View className='flex flex-row gap-3 mr-4'>
             <Link href="/notifications" asChild>
               <Pressable className={`size-11 flex items-center justify-center rounded-[10px]  ${pathname === '/notifications' ? 'bg-neutral-100' : 'bg-neutral-800'}`}>
-                <OcticonsIcon name="bell" size={18} color={pathname === '/notifications' ? '#171717' : 'white'} />
+                <OcticonsIcon name="bell" size={17} color={pathname === '/notifications' ? '#171717' : 'white'} />
               </Pressable>
             </Link>
             <Link href="/settings" asChild>
               <Pressable className={`size-11 flex items-center justify-center rounded-[10px] ${pathname === '/settings' ? 'bg-neutral-100' : 'bg-neutral-800'}`}>
-                <OcticonsIcon name="gear" size={18} color={pathname === '/settings' ? '#171717' : 'white'} />
+                <OcticonsIcon name="gear" size={17} color={pathname === '/settings' ? '#171717' : 'white'} />
               </Pressable>
             </Link>
           </View>
         ),
         tabBarStyle: {
           position: 'absolute',
-          bottom: 20,
-          left: '50%',
-          transform: [{ translateX: '-50%' }], 
-          width: 195,                    
-          paddingHorizontal: 13,        
+          marginHorizontal: 80,
+          marginBottom: 20,             
+          paddingHorizontal: 12,        
           elevation: 8,
           backgroundColor: '#171717',
           borderRadius: 18,
-          height: 'auto',
-          paddingBottom: 10,
-          paddingTop: 10,
+          height: 56,
           borderTopWidth: 0,
           shadowColor: '#0a0a0a',
           shadowOffset: {
@@ -56,19 +52,23 @@ export default function TabLayout() {
         },
         tabBarItemStyle: {
           flexDirection: 'row',
-          gap: 3,                           
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: 3,               
+          width: '100%',            
         },
         tabBarActiveTintColor: '#ffffff',
         tabBarInactiveTintColor: '#737373',
         tabBarShowLabel: false,
-    }}>
+      }}
+    >
       {/* BOTTOM NAV: Community, Home, and Profile */}
       <Tabs.Screen
         name="community"
         options={{
           title: 'Community',
           tabBarIcon: ({ color }) => (
-            <OcticonsIcon name="comment-discussion" size={28} color={color} />
+            <OcticonsIcon name="comment-discussion" size={25} color={color} />
           ),
         }}
       />
@@ -77,7 +77,7 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ color }) => (
-            <OcticonsIcon name="home" size={28} color={color} />
+            <OcticonsIcon name="home" size={25} color={color} />
           ),
         }}
       />
@@ -86,7 +86,7 @@ export default function TabLayout() {
         options={{
           title: 'Profile',
           tabBarIcon: ({ color }) => (
-            <OcticonsIcon name="person" size={28} color={color} /> 
+            <OcticonsIcon name="person" size={25} color={color} /> 
           ),
         }}
       />
