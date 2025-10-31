@@ -8,6 +8,9 @@ export default function LoginScreen() {
       <Link href="/(tabs)">
         <Text>to home</Text>
       </Link>
+      <Link href="/signup">
+        <Text>Signup</Text>
+      </Link>
     </View>
   )
 }

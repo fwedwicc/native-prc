@@ -1,23 +1,15 @@
 import { IconSymbol } from '@/components/ui/icon-symbol'
 import { Link, Tabs } from 'expo-router'
 import { View } from 'react-native'
-// import { useAuth } from '@/hooks/useAuth'
 
 export default function TabLayout() {
-  // const { isAuthenticated } = useAuth()
-
-  // Redirect to login if not authenticated
-  // if (!isAuthenticated) {
-  //   return <Redirect href="/(auth)/login" />
-  // }
-
   return (
     <Tabs
       screenOptions={{
         headerShown: true,
-        // header buttons
         headerRight: () => (
-          <View style={{ flexDirection: 'row', gap: 16, marginRight: 16 }}>
+          // tailwind not working huhuuuuu
+          <View className='flex flex-row gap-4 mr-4'>
             <Link href="/notifications">
               <IconSymbol name="bell.fill" size={24} color='black' />
             </Link>
@@ -26,11 +18,39 @@ export default function TabLayout() {
             </Link>
           </View>
         ),
+        tabBarStyle: {
+          position: 'absolute',
+          bottom: 0,                    // Float from bottom
+          left: 25,
+          right: 25,
+          elevation: 8,                  // Android shadow
+          backgroundColor: '#000000',
+          borderRadius: 25,              // Rounded corners
+          height: 70,
+          paddingBottom: 10,
+          paddingTop: 10,
+          borderTopWidth: 0,             // Remove default top border
+          // iOS shadow
+          shadowColor: '#000',
+          shadowOffset: {
+            width: 0,
+            height: 4,
+          },
+          shadowOpacity: 0.15,
+          shadowRadius: 8,
+        },
+        tabBarActiveTintColor: '#6366f1',      // Active icon color (indigo)
+        tabBarInactiveTintColor: '#9ca3af',    // Inactive icon color (gray)
+        tabBarShowLabel: true,
+        tabBarLabelStyle: {
+          fontSize: 12,
+          fontWeight: '600',
+          marginTop: 4,
+        },
       }}>
       <Tabs.Screen
         name="community"
         options={{
-          title: 'Community',
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name="person.3.fill" color={color} />
           ),
@@ -39,7 +59,6 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name="house.fill" color={color} />
           ),
@@ -48,7 +67,6 @@ export default function TabLayout() {
       <Tabs.Screen
         name="profile"
         options={{
-          title: 'Profile',
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name="person.circle.fill" color={color} />
           ),

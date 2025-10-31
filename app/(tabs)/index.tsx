@@ -1,5 +1,5 @@
 import { Link } from 'expo-router'
-import { Pressable, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
 
 export default function HomeScreen() {
   return (
@@ -8,10 +8,15 @@ export default function HomeScreen() {
       
       {/* Link to Logs page */}
       <Link href="/logs" asChild>
-        <Pressable>
           <Text>View Logs</Text>
-        </Pressable>
       </Link>
+       <Link href="/login">
+          <Text>Logout</Text>
+      </Link>
+
+      <View className="bg-red-500 border mt-24">
+        <Text>Hello</Text>
+      </View>
     </View>
   )
 }

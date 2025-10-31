@@ -1,4 +1,5 @@
-import { Stack } from 'expo-router'
+import { Stack } from 'expo-router';
+import "./global.css";
 // import { useAuth } from '@/hooks/useAuth'
 
 export default function RootLayout() {
