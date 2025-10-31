@@ -1,20 +1,42 @@
 import { IconSymbol } from '@/components/ui/icon-symbol'
-import { Link, Tabs } from 'expo-router'
-import { View } from 'react-native'
+import { Link, Tabs, usePathname } from 'expo-router'
+import { Pressable, View } from 'react-native'
 
 export default function TabLayout() {
+  const pathname = usePathname() 
+  
+  // for active routes
+  // const isNotificationsActive = pathname === '/notifications'
+  // const isSettingsActive = pathname === '/settings'
+
   return (
     <Tabs
       screenOptions={{
         headerShown: true,
+        headerStyle: {
+          backgroundColor: '#171717',  // bg-neutral-900
+        },
+        headerTintColor: '#f5f5f5',   // text-neutral-100 (for back button if any)
+        headerTitleStyle: {
+          color: '#f5f5f5',            // text-neutral-100
+          fontWeight: '600',
+          fontSize: 20,
+        },
+        // contentStyle: {
+        //   backgroundColor: '#171717',  // bg-neutral-900 (same as header)
+        // },
         headerRight: () => (
-          // tailwind not working huhuuuuu
-          <View className='flex flex-row gap-4 mr-4'>
-            <Link href="/notifications">
-              <IconSymbol name="bell.fill" size={24} color='black' />
+          // tailwind is now working wooooo
+          <View className='flex flex-row gap-3 mr-4'>
+            <Link href="/notifications" asChild>
+              <Pressable className={`size-11 flex items-center justify-center rounded-[10px] ${pathname === '/notifications' ? 'bg-neutral-100' : 'bg-neutral-800'}`}>
+                <IconSymbol name="bell.fill" size={18} color={pathname === '/notifications' ? '#171717' : 'white'} />
+              </Pressable>
             </Link>
-            <Link href="/settings">
-              <IconSymbol name="gearshape.fill" size={24} color='black' />
+            <Link href="/settings" asChild>
+              <Pressable className={`size-11 flex items-center justify-center rounded-[10px] ${pathname === '/settings' ? 'bg-neutral-100' : 'bg-neutral-800'}`}>
+                <IconSymbol name="gearshape.fill" size={18} color={pathname === '/settings' ? '#171717' : 'white'} />
+              </Pressable>
             </Link>
           </View>
         ),
@@ -39,7 +61,7 @@ export default function TabLayout() {
           shadowOpacity: 0.15,
           shadowRadius: 8,
         },
-        tabBarActiveTintColor: '#6366f1',      // Active icon color (indigo)
+        tabBarActiveTintColor: '#ffffff',      // Active icon color (indigo)
         tabBarInactiveTintColor: '#9ca3af',    // Inactive icon color (gray)
         tabBarShowLabel: true,
         tabBarLabelStyle: {
@@ -51,6 +73,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="community"
         options={{
+          title: 'Community',
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name="person.3.fill" color={color} />
           ),
@@ -59,6 +82,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
+          title: 'Home',
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name="house.fill" color={color} />
           ),
@@ -67,6 +91,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="profile"
         options={{
+          title: 'Profile',
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name="person.circle.fill" color={color} />
           ),

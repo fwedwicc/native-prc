@@ -1,6 +1,5 @@
 import { Stack } from 'expo-router';
 import "./global.css";
-// import { useAuth } from '@/hooks/useAuth'
 
 export default function RootLayout() {
   return (
@@ -18,14 +17,32 @@ export default function RootLayout() {
         name="notifications" 
         options={{ 
           title: 'Notifications',
-          presentation: 'card' 
+          presentation: 'card',
+          headerShown: true,
+          headerStyle: {
+            backgroundColor: '#171717',
+          },
+          headerTintColor: '#f5f5f5',
+          headerTitleStyle: {
+            color: '#f5f5f5',
+            fontWeight: '600',
+          },
         }} 
       />
       <Stack.Screen 
         name="settings" 
         options={{ 
           title: 'Settings',
-          presentation: 'card' 
+          presentation: 'card',
+          headerShown: true,
+          headerStyle: {
+            backgroundColor: '#171717',
+          },
+          headerTintColor: '#f5f5f5',
+          headerTitleStyle: {
+            color: '#f5f5f5',
+            fontWeight: '600',
+          },
         }} 
       />
     </Stack>
