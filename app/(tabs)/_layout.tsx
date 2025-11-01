@@ -1,6 +1,7 @@
 import { OcticonsIcon } from '@/components/ui/octoicons';
+import { Images } from '@/constants/images';
 import { Link, Tabs, usePathname } from 'expo-router';
-import { Pressable, View } from 'react-native';
+import { Image, Pressable, View } from 'react-native';
 
 export default function TabLayout() {
   const pathname = usePathname() 
@@ -68,7 +69,7 @@ export default function TabLayout() {
         options={{
           title: 'Community',
           tabBarIcon: ({ color }) => (
-            <OcticonsIcon name="comment-discussion" size={25} color={color} />
+            <OcticonsIcon name="comment-discussion" size={23} color={color} />
           ),
         }}
       />
@@ -76,8 +77,8 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color }) => (
-            <OcticonsIcon name="home" size={25} color={color} />
+          tabBarIcon: ({focused }) => (
+            <Image source={Images.PhasedLogo} className={`size-[3.2rem] rounded-[12px] border-[1.5px] ${focused ? 'border-neutral-100' : 'border-transparent'}`} />
           ),
         }}
       />
@@ -86,7 +87,7 @@ export default function TabLayout() {
         options={{
           title: 'Profile',
           tabBarIcon: ({ color }) => (
-            <OcticonsIcon name="person" size={25} color={color} /> 
+            <OcticonsIcon name="person" size={23} color={color} /> 
           ),
         }}
       />
