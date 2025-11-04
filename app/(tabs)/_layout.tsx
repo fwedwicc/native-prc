@@ -73,9 +73,9 @@ export default function TabLayout() {
         ),
         tabBarStyle: {
           position: 'absolute',
-          marginHorizontal: 80,
+          marginHorizontal: 87,
           marginBottom: 20,             
-          paddingHorizontal: 12,        
+          paddingHorizontal: 9,        
           elevation: 8,
           backgroundColor: '#171717',
           borderRadius: 18,
@@ -93,7 +93,7 @@ export default function TabLayout() {
           flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'center',
-          gap: 3,               
+          gap: 1,               
           width: '100%',            
         },
         tabBarActiveTintColor: '#ffffff',
@@ -118,7 +118,7 @@ export default function TabLayout() {
           title: 'Home',
           tabBarButton: (props) => <AnimatedTabButton {...props} />,
           tabBarIcon: ({ focused }) => (
-            <Image source={Images.PhasedLogo} className={`size-[3.2rem] rounded-[12px] border-[1.5px] ${focused ? 'border-neutral-100' : 'border-transparent'}`} />
+            <Image source={Images.PhasedLogo} className={`size-[3.2rem] rounded-[12px] border-[1.5px] ${focused ? 'border-neutral-200' : 'border-[1px] border-neutral-700/40'}`} />
           ),
         }}
       />
