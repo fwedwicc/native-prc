@@ -1,7 +1,45 @@
 import { OcticonsIcon } from '@/components/ui/octoicons';
 import { Images } from '@/constants/images';
+import type { BottomTabBarButtonProps } from '@react-navigation/bottom-tabs';
 import { Link, Tabs, usePathname } from 'expo-router';
 import { Image, Pressable, View } from 'react-native';
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
+
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
+
+// animatedd tab button
+function AnimatedTabButton({ children, ...props }: BottomTabBarButtonProps & { children: React.ReactNode }) {
+  const scale = useSharedValue(1);
+
+  const handlePressIn = () => {
+    scale.value = withTiming(1.2, { duration: 300 });
+  };
+
+  const handlePressOut = () => {
+    scale.value = withTiming(1, { duration: 300 });
+    props.onPress?.();
+  };
+
+  const animatedStyles = useAnimatedStyle(() => ({
+    transform: [{ scale: scale.value }],
+  }));
+
+  return (
+    <AnimatedPressable
+      {...props}
+      onPressIn={handlePressIn}
+      onPressOut={handlePressOut}
+      onPress={undefined}
+      style={[animatedStyles, props.style]}
+    >
+      {children}
+    </AnimatedPressable>
+  );
+}
 
 export default function TabLayout() {
   const pathname = usePathname() 
@@ -68,6 +106,7 @@ export default function TabLayout() {
         name="community"
         options={{
           title: 'Community',
+          tabBarButton: (props) => <AnimatedTabButton {...props} />,
           tabBarIcon: ({ color }) => (
             <OcticonsIcon name="comment-discussion" size={23} color={color} />
           ),
@@ -77,7 +116,8 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({focused }) => (
+          tabBarButton: (props) => <AnimatedTabButton {...props} />,
+          tabBarIcon: ({ focused }) => (
             <Image source={Images.PhasedLogo} className={`size-[3.2rem] rounded-[12px] border-[1.5px] ${focused ? 'border-neutral-100' : 'border-transparent'}`} />
           ),
         }}
@@ -86,6 +126,7 @@ export default function TabLayout() {
         name="profile"
         options={{
           title: 'Profile',
+          tabBarButton: (props) => <AnimatedTabButton {...props} />,
           tabBarIcon: ({ color }) => (
             <OcticonsIcon name="person" size={23} color={color} /> 
           ),
